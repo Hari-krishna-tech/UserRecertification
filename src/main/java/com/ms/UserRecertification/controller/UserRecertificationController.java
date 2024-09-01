@@ -35,11 +35,14 @@ public class UserRecertificationController {
 
     @PostMapping("/sendmail")
     public ResponseEntity<String> sendEmail(@RequestBody OriginRequest originRequest) {
-        String[] keyUsers = originRequest.getKeyUsers();
+       String[] keyUsers = originRequest.getKeyUsers();
         String[] primaryAndSecondaryApprover = originRequest.getPrimaryAndSecondaryApprovers();
+        /*
         String reportProfitCenter = originRequest.getReportProfitCenter();
         List<User> users = userService.getUsers(reportProfitCenter);
         String excelPath = userService.generateExcelFile(users);
+        */
+        String excelPath = "E:\\UserRecertification\\Dockerfile";
         emailService.sendEmail(keyUsers, primaryAndSecondaryApprover,excelPath);
         return ResponseEntity.ok("Email sent successfully");
     }
